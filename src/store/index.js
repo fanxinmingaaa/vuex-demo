@@ -11,8 +11,10 @@ const store = new Vuex.Store({
     users: [],
   },
   mutations: {
-    increment(state) {
-      Object.assign(state, { count: state.count + 1 });
+    increment(_state) {
+      // Object.assign(state, { count: state.count + 1 });
+      const state = _state;
+      state.count += 1;
     },
     [ADD](state, payload) {
       Object.assign(state, { count: payload + state.count });
@@ -33,6 +35,9 @@ const store = new Vuex.Store({
       const users = await dispatch('actionA');
       commit(CHANGE_USERS, users);
     },
+    // loadUsers({ dispatch, commit }) {
+    //   return dispatch('actionA').then(users => commit(CHANGE_USERS, users));
+    // },
   },
 });
 
